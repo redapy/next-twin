@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Wrapper } from "./styles";
+import { Normal, Test, Test1, Wrapper } from "./styles";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -8,5 +8,12 @@ export default function Home() {
   useEffect(() => {
     setIsClient(true);
   }, []);
-  return isClient ? <Wrapper>testing</Wrapper> : null;
+
+  return (
+    <Wrapper>
+      <Normal>Normal</Normal>
+      <Test $isHidden={!isClient}>Test with styled-components props</Test>
+      {isClient ? <Test1>test with conditional rendering</Test1> : null}
+    </Wrapper>
+  );
 }
